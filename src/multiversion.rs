@@ -98,7 +98,7 @@ cfg_if::cfg_if! {
 
         macro_rules! dispatch {
             ($target:ident => $name:ident ( $($arg:expr),+ )) => {
-                paste::paste! { [<$name _ default_version>] ( $($arg),+ ) },
+                paste::paste! { [<$name _ default_version>] ( $($arg),+ ) }
             }
         }
     }
