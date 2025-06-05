@@ -9,6 +9,15 @@ macro_rules! multiversion {
                 $block
             }
 
+            #[allow(dead_code)]
+            #[cfg(target_arch = "x86")]
+            #[inline]
+            $vis unsafe fn [<$name _ avx2_version>] $(<$($gen_name : $gen_ty),+>)? ( $($arg_name : $arg_ty),+ ) -> $ret {
+                #[allow(dead_code)]
+                const TARGET: crate::multiversion::Target = crate::multiversion::Target::Default; // avx2 is not supported on x86
+                $block
+            }
+
             #[cfg(target_arch = "x86_64")]
             #[target_feature(enable = "avx2")]
             #[inline]
